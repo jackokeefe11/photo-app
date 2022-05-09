@@ -1,0 +1,59 @@
+<html lang='en'>
+   <article class="content">
+
+      {% for post in posts %}
+      
+      <section class="posts">
+        
+         <span class="icon left">
+            <p style="font-family: Comfortaa; font-size: 20px; padding: 10px; margin: 0px;"><b>{{ post.get('user').get('username') }}</b></p>
+            <i class="fas fa-ellipsis-h"></i>
+         </span>
+
+         <img src="{{ post.get('image_url') }}" alt="{{ post.get('user').get('username') }}'s Profile Photo">
+         
+         <span class="icon left">
+         <span>
+         <i class="far fa-heart"></i>
+         <i class="far fa-comment"></i>
+         <i class="far fa-paper-plane"></i>
+         </span>
+         <span><i class="far fa-bookmark"></i></span>
+         </span>
+
+         <div>
+            <b style="font-size: 20px;">{{ post.get('likes') }} likes</b>
+         </div>
+
+         <p><b>{{ post.get('user').get('username') }}</b> {{ post.get('title') }}</p>
+
+         {% if post.get('comments')|length > 1 %}
+         <p style="color: #3f729b;"> &nbsp&nbsp&nbspView all {{ post.get('comments')|length }} comments</p>
+         
+         {% endif %}
+
+         {% if post.get('comments')|length > 0 %}
+         <p>
+            <b>{{ post.get('comments')[0].get('user').get('username') }}</b> {{ post.get('comments')[0].get('text') }} 
+         </p>
+         {% endif %}
+
+         <div style="color: gray; font-size: 13px;">
+            {{ post.get('display_time') }} 
+         </div>
+
+         <hr width="100%">
+         <span class="icon left">
+         <span>
+         <i class="far fa-smile"></i>
+         <span style="color: gray; padding-left: 15px; font-size: 18px;">Add a comment...</span>
+         </span>
+         <span class="blue">Post</span>
+         </span>
+
+      </section>
+
+      {% endfor %}
+  
+   </article>
+</html>

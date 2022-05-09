@@ -1,0 +1,29 @@
+<html lang='en'>
+   <article class="panel">
+
+      <ul style="padding-left: 10px; margin-bottom: 10px; padding-top: 10px;" class="stories">
+         <span style="display: flex; flex-wrap: nowrap; justify-content: flex-start;">
+         <li>
+            <img src="{{ stories[0].get('user').get('profile_url') }}" alt="{{ stories[0].get('title') }}">
+            <p>{{ stories[0].get('user').get('username') }}</p>
+         </li>
+         <li>
+            <img src="{{ stories[1].get('user').get('profile_url') }}" alt="{{ stories[1].get('title') }}">
+            <p>{{ stories[1].get('user').get('username') }}</p>
+         </li>
+         <li>
+            <img src="{{ stories[2].get('user').get('profile_url') }}" alt="{{ stories[2].get('title') }}">
+            <p>{{ stories[2].get('user').get('username') }}</p>
+         </li>
+         <li>
+            <img src="{{ stories[3].get('user').get('profile_url') }}" alt="{{ stories[3].get('title') }}">
+            <p>{{ stories[3].get('user').get('username') }}</p>
+         </li>
+         <li>
+            <img src="{{ stories[4].get('user').get('profile_url') }}" alt="{{ stories[4].get('title') }}">
+            <p>{{ stories[4].get('user').get('username') }}</p>
+         </li>
+         </span>
+   </ul>
+   </article>
+</html>

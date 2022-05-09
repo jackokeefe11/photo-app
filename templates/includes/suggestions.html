@@ -1,0 +1,82 @@
+<html lang="en">
+<article class="aside">
+      
+   <section class="user">
+      <img style="width: 70px; height: 70px;" src="{{ user.get('profile_url') }}" alt="User Profile Photo">
+      <p style="padding-top: 10px;"><b style="font-size: 22px; font-family: 'Comfortaa', Comfortaa;">{{ user.get('username') }}</b></p>
+   </section>
+   
+   <section style="font-family: 'Helvetica', Helvetica; color: gray; font-size: 15px;"><b>Suggestions for you</b></section>
+   
+   <section>
+      <span class="userimage" style="display: flex; justify-content: space-between;">
+         <span style="display: inline-flex;">
+         <img src="{{ suggestions[0].get('image_url') }}" alt="{{ suggestions[0].get('username') }}'s Photo"/>
+         <span class="users">
+            <p>{{ suggestions[0].get('username') }}</p>
+            <p class="grey">suggested for you</p>
+         </span>
+         </span>
+         
+         <p class="follows"> follow </p>
+      </span>
+   </section>
+
+   <section>
+      <span class="userimage" style="display: flex; justify-content: space-between;">
+         <span style="display: inline-flex;">
+         <img src="{{ suggestions[1].get('image_url') }}" alt="{{ suggestions[1].get('username') }}'s Photo"/>
+         <span class="users">
+            <p>{{ suggestions[1].get('username') }}</p>
+            <p class="grey">suggested for you</p>
+         </span>
+         </span>
+
+         <p class="follows"> follow </p>
+      </span>
+   </section>
+
+   <section>
+      <span class="userimage" style="display: flex; justify-content: space-between;">
+         <span style="display: inline-flex;">
+         <img src="{{ suggestions[2].get('image_url') }}" alt="{{ suggestions[2].get('username') }}'s Photo"/>
+         <span class="users">
+            <p>{{ suggestions[2].get('username') }}</p>
+            <p class="grey">suggested for you</p>
+         </span>
+         </span>
+
+         <p class="follows"> follow </p>
+      </span>
+   </section>
+
+   <section>
+      <span class="userimage" style="display: flex; justify-content: space-between;">
+         <span style="display: inline-flex;">
+         <img src="{{ suggestions[3].get('image_url') }}" alt="{{ suggestions[3].get('username') }}'s Photo"/>
+         <span class="users">
+            <p>{{ suggestions[3].get('username') }}</p>
+            <p class="grey">suggested for you</p>
+         </span>
+         </span>
+
+         <p class="follows"> follow </p>
+      </span>
+   </section>
+
+   <section>
+      <span class="userimage" style="display: flex; justify-content: space-between;">
+         <span style="display: inline-flex;">
+         <img src="{{ suggestions[4].get('image_url') }}" alt="{{ suggestions[4].get('username') }}'s Photo"/>
+         <span class="users">
+            <p>{{ suggestions[4].get('username') }}</p>
+            <p class="grey">suggested for you</p>
+         </span>
+         </span>
+         
+         <p class="follows"> follow </p>
+      </span>
+   </section>
+
+</article>
+</html>
