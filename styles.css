@@ -13,9 +13,9 @@ body {
       ". main main sidebar sidebar";
 }
 
-article, section {
-   border: solid 1px #000;
+article{
    padding: 10px;
+   border: solid 8px #e5e5e5;
 }
 
 .banner {
@@ -41,10 +41,15 @@ article, section {
 
 nav {
    background-color: white;
-    align-content: space-between;
-    position: fixed;
-    /* padding-bottom: 50px; */
-    width: 100vw;
+   align-content: space-between;
+   position: fixed;
+   width: 100vw;
+   border-bottom: solid 20px #e5e5e5;
+   padding-bottom: 0px;
+}
+
+.nav-button span > li {
+   font-family: Comfortaa;
 }
 
 .panel {
@@ -52,27 +57,75 @@ nav {
    background-color: white;
    justify-content: space-between;
    padding: 0px;
-   margin: 0px;
+   margin-left: 13.8%;
+   font-family: 'Helvetica', Helvetica; 
+   color: gray; 
+   font-size: 10px;
+   width: 620px;
+}
+
+.panel p {
+   padding-left: 12px;
 }
 
 .stories {
    margin-top: 75px;
+   width: 600px;
 }
 
-.stories li {
+.stories ul{
+   margin-left: 0px;
+   margin-block-start: 0em;
+   padding-left: 0;
+   padding-inline-start: 0em;
+
+}
+
+.stories span {
+   display: inline-block;
+   justify-content: center;
+   align-items: center;
+}
+
+.stories span > li {
    list-style: none;
    display: inline-block; 
    margin-right: 10px;
+   justify-content: center; 
+   /* display: flex;
+   flex-direction: row;
+   justify-content: center; */
+}
+
+.stories p {
+   margin: 0px;
+   font-family: 'Helvetica', Helvetica; 
 }
 
 .stories img {
    border: 2px lightgray solid;
+   margin-left: 10px;
 }
 
 .content {
    grid-area: main;
    background-color: white;
-   font: helvetica; 
+   width: 600px;
+}
+
+.content .left {
+   align-items: center;
+}
+
+.far {
+   font-size: 25px;
+   padding-top: 5px;
+   padding-bottom: 20px;
+}
+
+.fas {
+   font-size: 25px;
+   padding-top: 7px;
 }
 
 i {
@@ -88,6 +141,13 @@ i {
 .content img {
    width: 100%;
    height: auto; 
+   border-radius: 0px;
+}
+
+.posts {
+   font-family: 'Helvetica', Helvetica; 
+   background-color: white;
+   width: 600px;
 }
 
 img {
@@ -103,12 +163,30 @@ img {
 }
 
 .aside {
+   display: flex;
+   flex-direction: column;
    grid-area: sidebar;
    margin-top: 100px;
+   position: fixed;
+   margin-left: 750px;
+   font-family: 'Helvetica', Helvetica;
+}
+
+.grey {
+   color: gray;
+   font-size: 12px;
+}
+
+.blue {
+   color: #3f729b;
+   font-size: 18px;
+}
+
+.follows{
+   color: #3f729b;
 }
 
 .user span {
-   background: yellow;
    padding: 20px;
 }
 
@@ -131,35 +209,18 @@ img {
    padding: 5px;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
+   aside {
+       display: none;
+   }
+   .panel{
+       margin: 0px;
+   }
    .container {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-         "header"
-         "main"
-         "footer";
-      line-height: 1.5em;
-      font-size: 1.2em;
-   }
-   .aside {
-      display: none;
-   }
-   .banner, .footer {
-      background: #F0F0F0;
-   }
-   heading, article, section {
-      border: none;
-      padding: 10px;
-   }
-   heading h1 {
-      margin: 5px;
-   }
-   .banner nav li { 
-      display: block; 
-      padding: 3px;
-   }
-   .banner nav li a { 
-      text-decoration: none;
+      grid-template-columns: 0px;
    }
 }
+
+
+
 
