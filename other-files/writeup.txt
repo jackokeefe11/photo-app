@@ -1,0 +1,28 @@
+What corrections did you have to make?
+	We added the username to the alt text to add specificity to the text. 
+	Apart from that, we already met the requirements for accessibility that weren’t
+	contrary to the assignment outline. 
+
+Given that the photos and captions rely on user-generated content, 
+do you think that the accessibility problems are all solvable? Why or why not?
+
+	In an ideal world, all accessibility problems are solvable. Because a percentage 
+	of these problems rely on user input, it is not guaranteed that users will 
+	ensure accessibility. For example, users should generate alt text captions for 
+	their images to help visually impaired people, but I suspect the percentage 
+	of people who write alt text is extremely low. Apart from that, it is the developers 
+	responsibility to allow for the most accessible application possible without user input. 
+	This includes using correct color combinations, text to speech features, and anything else 
+	that improves accessibility. 
+
+Do you think your website is usable if you turn off the CSS? Why or why not?
+	Yes, the website is not as beautiful, but it is certainly usable. 
+	All the required features are present and laid out in a logical fashion 
+	regardless if the CSS is present or not. 
+
+Do you think your website is usable if you turn off the images? Why or why not?
+	Without the images, the website loses massive amount of functionality. 
+	Because the website is a “photo application,” disabling images runs contrary to the
+	intent of the website. To conclude, the website is usable, but it becomes rather 
+	pointless as the images comprise the most important part of the application. 
+
