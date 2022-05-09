@@ -236,6 +236,7 @@ def get_authorized_user_ids(user_id):
     ids = get_following_ids(user_id)
     ids.append(user_id)
     return ids
+    
 
 def get_post_that_user_cannot_access(user_id):
     with db.connect() as conn:
@@ -269,6 +270,10 @@ def get_x_that_user_cannot_delete(table_name, user_id):
         conn.close()
         object = _zip(columns, rows)
         return object
+
+
+def get_post_that_user_cannot_edit_delete(user_id):
+    return get_x_that_user_cannot_delete('posts', user_id)
 
 
 def get_comment_that_user_cannot_delete(user_id):

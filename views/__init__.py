@@ -53,4 +53,3 @@ def initialize_routes(api):
     init_story_routes(api)
     init_suggestion_routes(api)
     init_comment_like_routes(api)
-        
