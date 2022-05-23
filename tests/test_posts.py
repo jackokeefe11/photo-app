@@ -184,7 +184,7 @@ class TestPostDetailEndpoint(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_post_patch_unauthorized_id_404(self):
-        post_no_access = utils.get_post_that_user_cannot_edit_delete(self.current_user.get('id'))
+        post_no_access = utils.get_post_that_user_cannot_access(self.current_user.get('id'))
         url = '{0}/api/posts/{1}'.format(root_url, post_no_access.get('id'))
         
         response = requests.patch(url, json={})
@@ -215,7 +215,7 @@ class TestPostDetailEndpoint(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_post_delete_unauthorized_id_404(self):
-        post_no_access = utils.get_post_that_user_cannot_edit_delete(self.current_user.get('id'))
+        post_no_access = utils.get_post_that_user_cannot_access(self.current_user.get('id'))
         url = '{0}/api/posts/{1}'.format(root_url, post_no_access.get('id'))
         
         response = requests.delete(url)
