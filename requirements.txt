@@ -4,6 +4,7 @@ python-dotenv       # support for environment variables
 Flask
 Flask-Cors
 Flask-RESTful
+Flask-JWT-Extended
 
 psycopg2-binary         # PostgreSQL DB connector
 SQLAlchemy

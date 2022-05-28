@@ -1,3 +1,112 @@
+const getCookie = key => {
+    let name = key + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    console.log(decodedCookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        console.log(c);
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+};
+// Lab07
+const toggleFollow = ev =>{
+    const elem = ev.currentTarget;
+    
+    if (elem.getAttribute('aria-checked') === 'false') {
+        // issue post request for to UI for new follower:
+        followUser(elem.dataset.userId, elem);
+    
+    } else {
+        // issue delete request:
+        unfollowUser(elem.dataset.followingId, elem);
+    }
+};
+
+const followUser = (userId, elem) => {
+    const postData = {
+        "user_id": userId
+    };
+
+    fetch('/api/following', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
+            },
+            body: JSON.stringify(postData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            elem.innerHTML = 'unfollow';
+            elem.setAttribute('aria-checked', 'true');
+            elem.classList.add('unfollow');
+            elem.classList.remove('follow');
+
+            // in the event that we want to unfollow
+            elem.setAttribute('data-following-id', data.id);
+        });
+};
+
+const unfollowUser = (followingId, elem) => {
+    // issue a delete request
+    const deleteURL = `/api/following/${followingId}`;
+
+    fetch(deleteURL, {
+        method: "DELETE",
+        headers: {
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        elem.innerHTML = 'follow';
+        elem.classList.add('follow');
+        elem.classList.remove('unfollow');
+
+        elem.removeAttribute('data-following-id');
+        elem.setAttribute('aria-checked', 'false');
+    });
+};
+
+const user2Html = user => {
+    return `<div class="suggestion">
+        <img src="${user.thumb_url}"/>
+        <div>
+            <p class="username">${user.username}</p>
+            <p class="suggestion-text">suggested for you</p>
+        </div>
+        <div>
+            <button 
+            class="follow" 
+            aria-label="Follow"
+            aria-checked="false"
+            data-user-id="${user.id}" 
+            onclick="toggleFollow(event);">follow</button>
+        </div>
+    </div>`;
+};
+
+
+const getSuggestions = () => {
+    fetch('/api/suggestions')
+    .then(response => response.json()) 
+    .then(users => {
+        console.log(users);
+        const html = users.map(user2Html).join('\n')
+        document.querySelector('#suggestions').innerHTML = html;
+    });
+};
+
+// Homework04
 const story2Html = story => {
     return `
         <div>
@@ -86,7 +195,6 @@ const displayAllComments = post => {
         html += `
         <div >
         <span class="modal-stack" style="display: flex;">
-
             <img class="modalpic" style="width: 30px; height: 30px; border-radius: 15px;" 
             src="${post.comments[i].user.thumb_url}"/>
  
@@ -119,6 +227,7 @@ const addComment = (postID, input, ev) => {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
         },
         body: JSON.stringify(postData)
     })
@@ -201,9 +310,7 @@ const post2Html = post => {
     return `
         <section id="post_${post.id}" style="border: solid #e5e5e5;">
             <h3 style="color=#444;">${post.user.username}</h3>
-
             <img style="width: 100%;" src="${post.image_url}" alt="${post.user.username}'s post"/>
-
             <span class="icons">
             <span>
                 ${renderLikeButton(post)}
@@ -219,7 +326,6 @@ const post2Html = post => {
                 ${renderBookmarkButton(post)}
             </span>
             </span>
-
             <div id="likes" style="padding-top: 0px;">
                 <b>${post.likes.length} like${(post.likes.length == 1) | (post.likes.length == 0)? '' : 's'}</b>
             </div>
@@ -229,9 +335,7 @@ const post2Html = post => {
             <p id="time">
                 ${post.display_time}
             </p>
-
             ${displayComments(post)}
-
             <hr style="width:100%; height:2px; text-align:left; margin-left:0px; border-top:2px solid #e5e5e5"/>
             
             <span class="add-comment" style="display: flex; justify-content: space-between;">
@@ -247,7 +351,6 @@ const post2Html = post => {
                 </button>
             </span>
         </section>
-
         <hr style="width:100%; height:10px; text-align:left; margin-left:0px; border-top:10px solid #f2f2f2"/>
     `;
 };
@@ -280,6 +383,7 @@ const likePost = elem => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
             },
             body: JSON.stringify(postData)
         })
@@ -299,6 +403,7 @@ const unlikePost = elem => {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
         }
     })
     .then(response => response.json())
@@ -332,6 +437,7 @@ const bookmarkPost = elem => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
             },
             body: JSON.stringify(postData)
         })
@@ -351,6 +457,7 @@ const unbookmarkPost = elem => {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
         }
     })
     .then(response => response.json())
@@ -449,6 +556,7 @@ const initPage = () => {
     displayStories();
     displayPosts();
     displayProfile();
+    getSuggestions();
 };
 
 // invoke init page to display stories:

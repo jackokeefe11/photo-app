@@ -389,8 +389,7 @@ body .modal {
 .modal #all-comments {
     display: flex;
     flex-direction: column;
-    height: auto;
-    max-height: 100vh;
+    max-height: 120vh;
     overflow-y: auto;
 }
 .modal #close_button {

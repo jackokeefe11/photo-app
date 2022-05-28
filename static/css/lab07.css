@@ -35,14 +35,12 @@ main {
 
 .suggestion .username {
     font-weight: bold;
-    /* color: #555; */
-    color: black;
+    color: #555;
 }
 
 .suggestion .suggestion-text {
     font-size: .9em;
     color: #555;
-    font-weight: normal;
 }
 
 .suggestion button {
@@ -54,7 +52,6 @@ main {
 
 .follow{
     background: transparent;
-    color: rgb(44, 105, 155);
 }
 
 .unfollow {
